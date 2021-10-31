@@ -8,5 +8,7 @@ class Arbol
 {
 private:
 public:
+    virtual int* getValor();
+    virtual Operador* getOper();
 };
 

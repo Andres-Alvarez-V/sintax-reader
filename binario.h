@@ -5,7 +5,7 @@
 #include "operador.h"
 using namespace std;
 
-class Binario : virtual public Arbol
+class Binario :  public Arbol
 {
 private:
     Operador* oper;
