@@ -4,7 +4,7 @@
 #include "arbol.h"
 using namespace std;
 
-class Numero :public Arbol
+class Numero : virtual public Arbol
 {
 private:
     int valor;

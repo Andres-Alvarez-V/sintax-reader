@@ -4,13 +4,13 @@
 #include "binario.h"
 using namespace std;
 
-Binario::Binario(Operador oper, Arbol izq, Arbol der){
+Binario::Binario(Operador* oper, Arbol izq, Arbol der){
     this->oper=oper;
     this->izq=izq;
     this->der=der;
 }
 
-Operador Binario::getOper(){
+Operador* Binario::getOper(){
     return oper;
 }
 

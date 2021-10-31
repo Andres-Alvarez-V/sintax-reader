@@ -4,17 +4,16 @@
 #include "arbol.h"
 using namespace std;
 
-class Operador :public Arbol
+class Operador
 {
 private:
-    enum operador{
-        SUMA = '+',
-        RESTA = '-',
-        MULT = '*',
-        DIV = '/',
-    };
-public:
-    virtual void abstract();
     char oper;
+public:
     Operador(char oper);
+    string getOper();
+    void SUMA();
+    void RESTA();
+    void DIV();
+    void MULT();
+    
 };

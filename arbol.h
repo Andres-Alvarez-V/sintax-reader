@@ -8,6 +8,5 @@ class Arbol
 {
 private:
 public:
-    virtual void abstract();
 };
 
