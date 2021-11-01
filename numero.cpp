@@ -3,10 +3,10 @@
 #include "numero.h"
 using namespace std;
 
-Numero::Numero(int* valor){
+Numero::Numero(int valor){
     this->valor=valor;
 }
 
-int* Numero::getValor(){
+int Numero::getValor(){
     return this->valor;
 }

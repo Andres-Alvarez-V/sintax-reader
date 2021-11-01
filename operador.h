@@ -4,6 +4,8 @@
 #include "arbol.h"
 using namespace std;
 
+//el enum de los operadores esta en pruebas 
+
 class Operador
 {
 private:
@@ -11,9 +13,9 @@ private:
 public:
     Operador(char oper);
     string getOper();
-    void SUMA();
-    void RESTA();
-    void DIV();
-    void MULT();
+    // void SUMA();
+    // void RESTA();
+    // void DIV();
+    // void MULT();
     
 };

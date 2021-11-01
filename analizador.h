@@ -12,7 +12,7 @@ class Analizador
 private:
 
 public:
-    int* evaluar(Arbol* raiz);
-    stringbuf imprimir();
-    string imprimirTodo();
+    int evaluar(Arbol* raiz);
+    string imprimir(Arbol *raiz);
+    string imprimirTodo(Arbol *exp);
 };
