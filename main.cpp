@@ -8,9 +8,13 @@
 
 using namespace std;
 
-main(){
+int main(){
+    
 
-    Pruebas::expresion01();
+    Pruebas a = Pruebas();
+    a.expresion01();
+    
+    
 
     return 0;
 }

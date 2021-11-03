@@ -10,5 +10,5 @@ private:
     
 public:
 
-    static void expresion01();
+    void expresion01();
 };

@@ -9,12 +9,13 @@
 using namespace std;
 
 enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
+
 void Pruebas::expresion01(){
 
     Arbol expresion[] = {
-        Binario(Operador(SUM),
-                Numero(4),
-                Numero(5)
+        Binario(new Operador(SUM),
+                new Numero(4),
+                new Numero(5)
         )
     };
 
