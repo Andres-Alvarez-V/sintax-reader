@@ -9,6 +9,5 @@ class Pruebas
 private:
     
 public:
-
-    void expresion01();
+    static void expresion01();
 };

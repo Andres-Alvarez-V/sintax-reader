@@ -9,7 +9,6 @@ class Numero : public Arbol
 private:
     int valor;
 public:
-    virtual void abstract();
     Numero(int valor);
     int getValor();
 };

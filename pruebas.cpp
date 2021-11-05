@@ -8,18 +8,16 @@
 
 using namespace std;
 
-enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
+//enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
 
 void Pruebas::expresion01(){
 
-    Arbol expresion[] = {
-        Binario(new Operador(SUM),
-                new Numero(4),
-                new Numero(5)
-        )
-    };
+    Arbol *expresion[] = {
+      new Binario('*',
+                  new Binario('+', new Numero(4), new Numero(4)),
+                  new Numero(5))};
 
-    Analizador calculadora = Analizador();
+  Analizador *calculadora = new Analizador();
 
-    cout << calculadora.imprimirTodo(&expresion[0]) << endl;
+  cout << calculadora->imprimirTodo(expresion[0]) << endl;;
 }

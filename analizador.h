@@ -7,12 +7,10 @@
 #include "binario.h"
 using namespace std;
 
-class Analizador
-{
-private:
-
-public:
-    int evaluar(Arbol* raiz);
+class Analizador{
+  private:
+  public:
+    int evaluar(Arbol *raiz);
     string imprimir(Arbol *raiz);
     string imprimirTodo(Arbol *exp);
 };

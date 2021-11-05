@@ -7,11 +7,11 @@ using namespace std;
 
 //Se importo la clase operador.h y se quito el apuntador del getValor()
 
-class Arbol
-{
-private:
-public:
-    virtual int getValor();
-    virtual Operador* getOper();
+class Arbol{
+  private:
+    string type;
+  public:
+    string viewType();
+    void setType(string type);
 };
 

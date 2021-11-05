@@ -12,7 +12,7 @@ private:
     char oper;
 public:
     Operador(char oper);
-    string getOper();
+    char toString();
     // void SUMA();
     // void RESTA();
     // void DIV();

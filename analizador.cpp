@@ -13,73 +13,76 @@ inline bool instanceof(const T*) {
 }
 
 
-int Analizador::evaluar(Arbol* raiz){
-    int res = 0;
-    
-    if(raiz == nullptr){
-        return res;
-    }
-    else{
+int Analizador::evaluar(Arbol *raiz)
+{
+  int res = 0;
 
-        if(instanceof<Numero>(raiz)){
-            Numero *n = dynamic_cast<Numero*>(raiz);
-            res = n->getValor();
-        }else{
-
-            Binario *binario = dynamic_cast<Binario*>(raiz);
-            Operador *oper = binario->getOper();
-            string valor = oper->getOper();
-            
-            if(valor == "+"){
-
-                res = evaluar(binario->getIzq()) + evaluar(binario->getIzq());
-
-            }else if(valor == "-"){
-                
-                res = evaluar(binario->getIzq()) - evaluar(binario->getIzq());
-
-            }else if(valor == "*"){
-                
-                res = evaluar(binario->getIzq()) * evaluar(binario->getIzq());
-
-            }else if(valor == "/"){
-                
-                res = evaluar(binario->getIzq()) / evaluar(binario->getIzq());
-
-            }
-        }
-    }
-
+  if (raiz==NULL)
+  {
     return res;
-}
-
-string Analizador::imprimir(Arbol *raiz){
-
-    string ecuacion = "";
-
-    if(raiz == nullptr){
-        return ecuacion;
-    }else{
-        if(instanceof<Numero>(raiz)){
-            Numero *n = dynamic_cast<Numero*>(raiz);
-            ecuacion.append(to_string(n->getValor()));
-            // int res = n->getValor();
-        }else{
-            Binario *binario = dynamic_cast<Binario*>(raiz);
-            Operador *oper = binario->getOper();
-            ecuacion.append("(")
-                    .append(imprimir(binario->getIzq()))
-                    .append(binario->getOper()->getOper())
-                    .append(imprimir(binario->getDer()))
-                    .append(")");
-        }
+  }
+  else
+  {
+    if (raiz->viewType() == "Numero")
+    {
+      Numero *n = (Numero *)raiz;
+      res = n->getValor();
+      
     }
+    else
+    {
+      Binario *operador = (Binario *)raiz;
+      switch(operador->getOper()->toString()){
+        case '+':
+          res = evaluar(operador->getIzq()) + evaluar(operador->getDer());
+          break;
+        case '-':
+           res = evaluar(operador->getIzq()) - evaluar(operador->getDer());
+           break;
+        case '*':
+          res = evaluar(operador->getIzq()) * evaluar(operador->getDer());
+          break;
+        case '/':
+          res = evaluar(operador->getIzq()) / evaluar(operador->getDer());
+          break;
+      }
+    }
+  }
+  return res;
+} //fin del metodo
 
-    return ecuacion;
-
+//============================================
+string Analizador ::imprimir(Arbol *raiz)
+{
+  string ecuacion;
+  if (raiz == NULL)
+  {
+    //return "Sin ecuación";
+  }
+  else
+  {
+    if (raiz->viewType() == "Numero")
+    {
+      Numero *n = (Numero *)raiz;
+      ecuacion = to_string(n->getValor());
+    }
+    else
+    {
+      Binario *operador = (Binario *)raiz;
+      ecuacion = ecuacion + "(";
+      ecuacion.append(imprimir(operador->getIzq()));
+      ecuacion += operador->getOper()->toString();
+      ecuacion += imprimir(operador->getDer());
+      ecuacion.append(")");
+    }
+  }
+  return ecuacion;
 }
 
-
-string Analizador::imprimirTodo(Arbol *exp){
-    return imprimir(exp) + " = " +  to_string(evaluar(exp));
+string Analizador::imprimirTodo(Arbol *exp)
+{
+  string res = imprimir(exp);
+  res += "=";
+  res.append(to_string(evaluar(exp)));
+  return res;
 }

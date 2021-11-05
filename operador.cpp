@@ -7,8 +7,8 @@ Operador::Operador(char oper){
     this->oper = oper;
 }
 
-string Operador::getOper(){
-    return "" + this->oper;
+char Operador::toString(){
+    return oper;
 }
 
 // void Operador::SUMA(){

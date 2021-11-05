@@ -5,6 +5,7 @@ using namespace std;
 
 Numero::Numero(int valor){
     this->valor=valor;
+    setType("Numero");
 }
 
 int Numero::getValor(){
