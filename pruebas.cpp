@@ -13,8 +13,8 @@ enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
 void Pruebas::expresion01(){
 
     Arbol *expresion[] = {
-      new Binario(MULT,
-                  new Binario(SUM, new Numero(4), new Numero(4)),
+      new Binario(new Operador(MULT),
+                  new Binario(new Operador(SUM), new Numero(4), new Numero(4)),
                   new Numero(5))};
 
   Analizador *calculadora = new Analizador();

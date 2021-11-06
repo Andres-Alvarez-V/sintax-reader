@@ -4,8 +4,8 @@
 #include "binario.h"
 using namespace std;
 
-Binario::Binario(Operador oper, Arbol *izq, Arbol *der){
-    this->oper= new Operador(oper);
+Binario::Binario(Operador *oper, Arbol *izq, Arbol *der){
+    this->oper= oper;
     this->izq= izq;
     this->der= der;
     setClassType("Binario");
