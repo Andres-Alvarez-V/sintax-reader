@@ -5,7 +5,7 @@ using namespace std;
 
 Numero::Numero(int valor){
     this->valor=valor;
-    setType("Numero");
+    setClassType("Numero");
 }
 
 int Numero::getValor(){

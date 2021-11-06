@@ -12,10 +12,6 @@ private:
     char oper;
 public:
     Operador(char oper);
-    char toString();
-    // void SUMA();
-    // void RESTA();
-    // void DIV();
-    // void MULT();
+    char getOper();
     
 };

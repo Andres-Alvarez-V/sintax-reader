@@ -5,25 +5,17 @@
 #include "analizador.h"
 using namespace std;
 
-
-//https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
-template<typename Base, typename T>
-inline bool instanceof(const T*) {
-    return is_base_of<Base, T>::value;
-}
-
-
 int Analizador::evaluar(Arbol *raiz)
 {
   int res = 0;
 
-  if (raiz==NULL)
+  if (raiz==nullptr)
   {
     return res;
   }
   else
   {
-    if (raiz->viewType() == "Numero")
+    if (raiz->viewClassType() == "Numero")
     {
       Numero *n = (Numero *)raiz;
       res = n->getValor();
@@ -32,13 +24,13 @@ int Analizador::evaluar(Arbol *raiz)
     else
     {
       Binario *operador = (Binario *)raiz;
-      switch(operador->getOper()->toString()){
+      switch(operador->getOper()->getOper()){
         case '+':
           res = evaluar(operador->getIzq()) + evaluar(operador->getDer());
           break;
         case '-':
-           res = evaluar(operador->getIzq()) - evaluar(operador->getDer());
-           break;
+          res = evaluar(operador->getIzq()) - evaluar(operador->getDer());
+          break;
         case '*':
           res = evaluar(operador->getIzq()) * evaluar(operador->getDer());
           break;
@@ -52,31 +44,30 @@ int Analizador::evaluar(Arbol *raiz)
 } //fin del metodo
 
 //============================================
-string Analizador ::imprimir(Arbol *raiz)
-{
-  string ecuacion;
-  if (raiz == NULL)
-  {
-    //return "Sin ecuación";
-  }
-  else
-  {
-    if (raiz->viewType() == "Numero")
-    {
-      Numero *n = (Numero *)raiz;
-      ecuacion = to_string(n->getValor());
+
+
+string Analizador::imprimir(Arbol *raiz){
+
+    string ecuacion = "";
+
+    if(raiz == nullptr){
+        return ecuacion;
+    }else{
+        if(raiz->viewClassType() == "Numero"){
+            Numero *n = (Numero *)raiz;
+            ecuacion = to_string(n->getValor());
+            
+        }else{
+            Binario *operador = (Binario *)raiz;
+            Operador *oper = operador->getOper();
+            ecuacion.append("(")
+                    .append(imprimir(operador->getIzq()));
+            ecuacion += (oper->getOper());
+            ecuacion.append(imprimir(operador->getDer()))
+                    .append(")");
+        }
     }
-    else
-    {
-      Binario *operador = (Binario *)raiz;
-      ecuacion = ecuacion + "(";
-      ecuacion.append(imprimir(operador->getIzq()));
-      ecuacion += operador->getOper()->toString();
-      ecuacion += imprimir(operador->getDer());
-      ecuacion.append(")");
-    }
-  }
-  return ecuacion;
+    return ecuacion;
 }
 
 string Analizador::imprimirTodo(Arbol *exp)

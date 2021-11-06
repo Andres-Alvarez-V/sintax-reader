@@ -8,13 +8,13 @@
 
 using namespace std;
 
-//enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
+enum operadores { SUM = '+', RES = '-', MULT = '*', DIV = '/'};
 
 void Pruebas::expresion01(){
 
     Arbol *expresion[] = {
-      new Binario('*',
-                  new Binario('+', new Numero(4), new Numero(4)),
+      new Binario(MULT,
+                  new Binario(SUM, new Numero(4), new Numero(4)),
                   new Numero(5))};
 
   Analizador *calculadora = new Analizador();

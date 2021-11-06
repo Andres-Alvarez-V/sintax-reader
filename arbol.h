@@ -9,9 +9,9 @@ using namespace std;
 
 class Arbol{
   private:
-    string type;
   public:
-    string viewType();
-    void setType(string type);
+    string classType;
+    string viewClassType();
+    void setClassType(string classType);
 };
 

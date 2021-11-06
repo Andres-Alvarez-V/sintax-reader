@@ -2,10 +2,10 @@
 #include "arbol.h"
 using namespace std;
 
-string Arbol::viewType(){
-    return this->type;
+string Arbol::viewClassType(){
+    return this->classType;
 }
 
-void Arbol::setType(string type){
-    this->type = type;
+void Arbol::setClassType(string classType){
+    this->classType = classType;
 }

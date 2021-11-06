@@ -8,7 +8,7 @@ Binario::Binario(Operador oper, Arbol *izq, Arbol *der){
     this->oper= new Operador(oper);
     this->izq= izq;
     this->der= der;
-    setType("Binario");
+    setClassType("Binario");
 }
 
 Operador* Binario::getOper(){
